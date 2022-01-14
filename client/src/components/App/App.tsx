@@ -1,13 +1,19 @@
 import React from 'react';
-import Navbar from '../navbar/Navbar';
-import './App.scss';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import Navbar from '../Navbar/Navbar';
+import Profile from '../Profile/Profile';
+import './App.css';
 
 const App: React.FC = () => (
   <>
-    <Navbar />
-    <div className='container'>hi</div>
+    <Header />
+    <div className='container'>
+      <Navbar />
+      <Profile />
+    </div>
+    <Footer />
   </>
 );
 
 export default App;
- 

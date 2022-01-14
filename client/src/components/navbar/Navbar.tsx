@@ -1,30 +1,26 @@
 import React from 'react';
+import './Navbar.css'
 
 const Navbar: React.FC = () => (
-  <nav>
-    <div className='nav-wrapper blue darken-1 px1'>
-      <a href='/' className='brand-logo'>
-        AruSNet
-      </a>
-      <ul className='right hide-on-med-and-down'>
-        <li>
-          <a href='/'>Profile</a>
-        </li>
-        <li>
-          <a href='/'>Friends</a>
-        </li>
-        <li>
-          <a href='/'>Dialogs</a>
-        </li>
-        <li>
-          <a href='/'>News</a>
-        </li>
-        <li>
-          <a href='/'>Exit</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <div className='navbar'>
+    <ul className='navbar__list'>
+      <li className='navbar__list__item'>
+        <a href='/'>Profile</a>
+      </li>
+      <li className='navbar__list__item'>
+        <a href='/'>Friends</a>
+      </li>
+      <li className='navbar__list__item'>
+        <a href='/'>Messages</a>
+      </li>
+      <li className='navbar__list__item'>
+        <a href='/'>News</a>
+      </li>
+      <li className='navbar__list__item'>
+        <a href='/'>Settings</a>
+      </li>
+    </ul>
+  </div>
 );
 
 export default Navbar;

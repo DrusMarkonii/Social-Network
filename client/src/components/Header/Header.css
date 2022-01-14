@@ -1,0 +1,12 @@
+.header {
+    background-color: rgb(122, 33, 163);
+    
+}
+
+.header a {
+    color: white;
+}
+
+.header__logo__img {
+  width: 50px;
+}

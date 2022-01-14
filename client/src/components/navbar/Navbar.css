@@ -1,0 +1,8 @@
+.navbar {
+  background-color: cadetblue;
+  width: 200px;
+  height: 500px;
+}
+.navbar__list__item a {
+  color: white
+}

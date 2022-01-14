@@ -1,0 +1,13 @@
+.footer {
+    background-color: rgb(122, 33, 163);
+    text-align: center;
+    
+}
+
+.footer a {
+    color: white;
+}
+
+.footer__logo__img {
+  width: 50px;
+}
