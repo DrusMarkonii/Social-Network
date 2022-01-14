@@ -1,4 +1,5 @@
 import React from 'react';
+import MyPosts from './MyPosts/MyPosts';
 
 const Profile: React.FC = () => (
   <div className='profile'>
@@ -9,14 +10,7 @@ const Profile: React.FC = () => (
       />
     </div>
     <div>ava + description</div>
-    <div>
-      My MyPosts
-      <div>New Post</div>
-      <div>
-        <div>Post 1</div>
-        <div>Post 1</div>
-      </div>
-    </div>
+    <MyPosts />
   </div>
 );
 
