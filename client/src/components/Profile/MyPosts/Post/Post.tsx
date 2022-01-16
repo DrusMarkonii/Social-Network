@@ -1,16 +1,19 @@
 import React from 'react';
 import './Post.css';
 
-interface PostProps {
-  message?: string;
-};
 
-const Post:any = ({ message }: PostProps) => {
+type TypePost = {
+  message:string, 
+  username:string
+}
+
+
+const Post = ({message, username}:TypePost) => (
   <div className='post'>
     <div>
       <img src='https://www.blexar.com/avatar.png' alt='user ava' />
     </div>
-    <div>Username</div>
+    <div>{username}</div>
     <div>{message}</div>
     <div>
       <img
@@ -18,7 +21,7 @@ const Post:any = ({ message }: PostProps) => {
         alt='like for post'
       />
     </div>
-  </div>;
-};
+  </div>
+);
 
 export default Post;
