@@ -4,7 +4,7 @@
     
 }
 
-.footer a {
+.footer a, .footer__description {
     color: white;
 }
 

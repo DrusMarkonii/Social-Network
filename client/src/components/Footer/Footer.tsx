@@ -7,7 +7,7 @@ const Footer: React.FC = () => (
       AruSNet
       <img className='footer__logo__img' src='https://png.pngtree.com/png-clipart/20200709/original/pngtree-abstract-s-letter-circle-vector-logo-design-alphabet-circle-logo-vector-png-image_3611616.jpg' alt='logo img'/>
     </a>
-    <div>
+    <div className='footer__description'>
       PS Makarevich 2022
     </div>
   </div>
