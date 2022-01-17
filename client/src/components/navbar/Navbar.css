@@ -4,5 +4,6 @@
   height: 500px;
 }
 .navbar__list__item a {
-  color: white
+  color: white;
+  font-size: large;
 }

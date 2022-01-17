@@ -11,8 +11,8 @@ const MyPosts = () => (
         <button type='submit'>Add Post</button>
         <button type='submit'>Remove</button>
       </div>
-      <Post username='Drus Markonii' message='Welcome to AruSNet with Drus' />
-      <Post username='Jane' message='Welcome to AruSNet with Jane' />
+      <Post username='Drus Markoni' message='Welcome to AruSNet with Drus' likesCount={0} />
+      <Post username='Jane' message='Welcome to AruSNet with Jane' likesCount={5}/>
     </div>
   </div>
 );

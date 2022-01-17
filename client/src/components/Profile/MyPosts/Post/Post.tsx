@@ -4,11 +4,12 @@ import './Post.css';
 
 type TypePost = {
   message:string, 
-  username:string
+  username:string,
+  likesCount: number
 }
 
 
-const Post = ({message, username}:TypePost) => (
+const Post = ({message, username, likesCount}:TypePost) => (
   <div className='post'>
     <div>
       <img src='https://www.blexar.com/avatar.png' alt='user ava' />
@@ -21,6 +22,7 @@ const Post = ({message, username}:TypePost) => (
         alt='like for post'
       />
     </div>
+    <div>{likesCount}</div>
   </div>
 );
 
