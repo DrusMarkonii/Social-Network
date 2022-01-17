@@ -1,0 +1,23 @@
+.messages {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialogBox {
+  width: 200px;
+  border-right: 2px solid black;
+}
+
+.dialog a.active {
+  background-color: rgb(60, 22, 104);
+}
+
+.dialog a {
+  color: darkblue;
+}
+
+.messagesBox {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}

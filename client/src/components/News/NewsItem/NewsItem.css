@@ -1,0 +1,32 @@
+.news {
+  display: flex;
+  padding: 10px;
+  background-color: burlywood;
+  width: 800px;
+  height: 200px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+}
+
+.news img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.comments {
+  position: relative;
+  top: 130px;
+  left: -200px;
+  height: 50px;
+  width: 200px;
+  background-color: coral;
+
+}
+
+.likesBox {
+  display: flex;
+  position: relative;
+  top: 130px;
+  left: -200px;
+}

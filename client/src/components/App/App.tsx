@@ -7,6 +7,9 @@ import Navbar from '../Navbar/Navbar';
 import Profile from '../Profile/Profile';
 import Messages from '../Messages/Messages';
 import './App.css';
+import News from '../News/News';
+import Friends from '../Friends/Friends';
+import Registration from '../Registration/Registration';
 
 const App: React.FC = () => (
   <Router>
@@ -14,8 +17,11 @@ const App: React.FC = () => (
     <div className='container'>
       <Navbar />
       <Routes>
-        <Route path='/Profile' element={<Profile />} />
-        <Route path='/Messages' element={<Messages />} />
+        <Route path='/' element={<Registration />} />
+        <Route path='/profile/' element={<Profile />} />
+        <Route path='/messages/*' element={<Messages />} />
+        <Route path='/news/*' element={<News />} />
+        <Route path='/friends/*' element={<Friends />} />
       </Routes>
     </div>
     <Footer />

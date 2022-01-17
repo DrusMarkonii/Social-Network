@@ -5,7 +5,7 @@ import Post from './Post/Post';
 const MyPosts = () => (
   <div className='myPosts'>
     <div>
-      My MyPosts
+      <h5>My MyPosts</h5>
       <div>
         <textarea />
         <button type='submit'>Add Post</button>
