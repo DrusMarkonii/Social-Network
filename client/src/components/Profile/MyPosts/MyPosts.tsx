@@ -11,9 +11,10 @@ type myType = {
 
 type PostsDataType = {
   postsData: myType[];
+  addPost: any;
 };
 
-const MyPosts = ({ postsData }: PostsDataType) => {
+const MyPosts = ({ postsData, addPost }: PostsDataType) => {
   const PostItems = postsData.map((item) => (
     <Post
       username={item.username}
@@ -22,6 +23,12 @@ const MyPosts = ({ postsData }: PostsDataType) => {
       key={item.id}
     />
   ));
+  
+  const handlerAddPost= () => {
+    alert(addPost)
+    addPost('great job 1')
+  }
+
 
   return (
     <div className='myPosts'>
@@ -29,7 +36,7 @@ const MyPosts = ({ postsData }: PostsDataType) => {
         <h5>My MyPosts</h5>
         <div>
           <textarea />
-          <button type='submit'>Add Post</button>
+          <button onClick={handlerAddPost} type='submit'>Add Post</button>
           <button type='submit'>Remove</button>
         </div>
         {PostItems}

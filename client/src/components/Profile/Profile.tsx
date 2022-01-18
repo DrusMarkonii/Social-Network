@@ -10,13 +10,14 @@ type postsObjType = {
 };
 
 type PostDataType = {
-  postsData: postsObjType[]
+  postsData: postsObjType[];
+  addPost: any
 }
 
-const Profile = ({postsData}:PostDataType) => (
+const Profile = ({postsData, addPost}:PostDataType) => (
   <div className='profile'>
     <ProfileInfo />
-    <MyPosts postsData={postsData} />
+    <MyPosts postsData={postsData} addPost={addPost}/>
   </div>
 );
 

@@ -11,49 +11,64 @@ import News from '../News/News';
 import Friends from '../Friends/Friends';
 import Registration from '../Registration/Registration';
 
-type friendsObjType = {
-  username: string;
-  id: number;
-};
- 
-type postsObjType = {
-  id: number;
-  username: string;
-  message: string;
-  likesCount: number;
+// type friendsObjType = {
+//   username: string;
+//   id: number;
+// };
+
+// type postsObjType = {
+//   id: number;
+//   username: string;
+//   message: string;
+//   likesCount: number;
+// };
+
+// type dialogsObjType = {
+//   id: number;
+//   username: string;
+// };
+
+// type messagesObjType = {
+//   id: number;
+//   message: string;
+// };
+
+// type allDataType = {
+//   friendsData: friendsObjType[];
+//   postsData: postsObjType[];
+//   dialogsData: dialogsObjType[];
+//   messagesData: messagesObjType[];
+// };
+
+type stateType = {
+  appState: any;
+  addPost: any
 };
 
-type dialogsObjType = {
-  id: number;
-  username: string;
-};
-
-type messagesObjType = {
-  id: number;
-  message: string;
-};
-
-type allDataType = {
-  friendsData: friendsObjType[];
-  postsData: postsObjType[];
-  dialogsData: dialogsObjType[];
-  messagesData: messagesObjType[]
-};
-
-
-const App = ({ friendsData, postsData, messagesData, dialogsData }: allDataType) => (
+const App = ({ appState, addPost }: stateType) => (
   <Router>
     <Header />
     <div className='container'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Registration />} />
-        <Route path='/profile/' element={<Profile postsData={postsData} />} />
-        <Route path='/messages/*' element={<Messages messagesData={messagesData} dialogsData={dialogsData}/>} />
+        <Route
+          path='/profile/'
+          element={<Profile postsData={appState.profilePage.postsData} addPost={addPost}/>}
+        />
+        <Route
+          path='/messages/*'
+          element={
+            <Messages
+              messagesData={appState.messagesPage.messagesData}
+              dialogsData={appState.messagesPage.dialogsData}
+            />
+          }
+        />
         <Route path='/news/*' element={<News />} />
         <Route
           path='/friends/*'
-          element={<Friends friendsData={friendsData} />}
+          element={<Friends friendsData={appState.friendsPage.friendsData} />}
         />
       </Routes>
     </div>
