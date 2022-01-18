@@ -3,33 +3,36 @@ import './Messages.css';
 import Dialog from './Dialog/Dialog';
 import DialogMassage from './Dialog/DialogMassage';
 
-const dialogData = [
-  { id: 1, username: 'Drus' },
-  { id: 2, username: 'Rob' },
-  { id: 3, username: 'Bob' },
-  { id: 4, username: 'Jon' },
-];
+type dialogsObjType = {
+  id: number;
+  username: string;
+};
 
-const messageData = [
-  { id: 1, message: 'Ok. buy!' },
-  { id: 2, message: 'What are you doing?' },
-  { id: 3, message: 'how are you?' },
-  { id: 4, message: 'Hello' },
-];
+type messagesObjType = {
+  id: number;
+  message: string;
+};
 
-const DialogsItems = dialogData.map((item) => (
-  <Dialog username={item.username} id={item.id} key={item.id} />
-));
+type MessagesType = {
+  dialogsData: dialogsObjType[];
+  messagesData: messagesObjType[];
+}
 
-const MessagesItems = messageData.map((item) => (
-  <DialogMassage message={item.message} key={item.id} />
-));
+const Messages = ({dialogsData, messagesData}: MessagesType) => {
 
-const Messages: React.FC = () => (
-  <div className='messages'>
-    <div className='dialogBox'>{DialogsItems}</div>
-    <div className='messagesBox'>{MessagesItems}</div>
-  </div>
-);
+  const DialogsItems = dialogsData.map((user) => (
+    <Dialog username={user.username} id={user.id} key={user.id} />
+  ));
+
+  const MessagesItems = messagesData.map((dialog) => (
+    <DialogMassage message={dialog.message} key={dialog.id} />
+  ));
+  return (
+    <div className='messages'>
+      <div className='dialogBox'>{DialogsItems}</div>
+      <div className='messagesBox'>{MessagesItems}</div>
+    </div>
+  );
+};
 
 export default Messages;

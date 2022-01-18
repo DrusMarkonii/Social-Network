@@ -9,3 +9,14 @@
   width: 40px;
   border-radius: 50%;
 }
+.friend a.active {
+  background-color: rgb(60, 22, 104);
+  color: white;
+}
+
+.friend a {
+  color: darkblue;
+  width: 200px;
+  padding: 5px;
+}
+

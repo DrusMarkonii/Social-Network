@@ -2,10 +2,21 @@ import React from 'react';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile: React.FC = () => (
+type postsObjType = {
+  id: number;
+  username: string;
+  message: string;
+  likesCount: number;
+};
+
+type PostDataType = {
+  postsData: postsObjType[]
+}
+
+const Profile = ({postsData}:PostDataType) => (
   <div className='profile'>
     <ProfileInfo />
-    <MyPosts />
+    <MyPosts postsData={postsData} />
   </div>
 );
 
