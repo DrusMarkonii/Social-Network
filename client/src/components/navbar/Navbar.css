@@ -2,8 +2,13 @@
   background-color: cadetblue;
   width: 200px;
   height: 500px;
+  padding: 20px
 }
 .navbar__list__item a {
   color: white;
   font-size: large;
+}
+
+.navbar__list__item a.active {
+  background-color: rgb(102, 58, 138);
 }

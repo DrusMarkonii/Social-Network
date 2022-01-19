@@ -1,23 +1,24 @@
 import React from 'react';
-import './Navbar.css'
+import { NavLink } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar: React.FC = () => (
   <div className='navbar'>
     <ul className='navbar__list'>
       <li className='navbar__list__item'>
-        <a href='/Profile'>Profile</a>
+        <NavLink to='/profile'>Profile</NavLink>
       </li>
       <li className='navbar__list__item'>
-        <a href='/Friends'>Friends</a>
+        <NavLink to='/friends'>Friends</NavLink>
       </li>
       <li className='navbar__list__item'>
-        <a href='/Messages'>Messages</a>
+        <NavLink to='/messages'>Messages</NavLink>
       </li>
       <li className='navbar__list__item'>
-        <a href='/News'>News</a>
+        <NavLink to='/news'>News</NavLink>
       </li>
       <li className='navbar__list__item'>
-        <a href='/Settings'>Settings</a>
+        <NavLink to='/settings'>Settings</NavLink>
       </li>
     </ul>
   </div>

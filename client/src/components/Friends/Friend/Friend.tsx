@@ -1,19 +1,21 @@
 import React from 'react';
-import './Dialog.css';
 import { NavLink } from 'react-router-dom';
+import './Friend.css';
 
 type DialogType = {
   username: string;
-  id: number;
+  id:number;
+  
 };
 
-const Dialog = ({ username, id }: DialogType) => (
-  <div className='dialog'>
+const Friend = ({ username, id}: DialogType) => (
+  <div className='friend'>
+    
     <div>
       <img src='https://www.blexar.com/avatar.png' alt='user ava' />
     </div>
-    <NavLink to={`/messages/${id}`}>{username}</NavLink>
+    <NavLink to={`/friends/${id}`}>{username}</NavLink>
   </div>
 );
 
-export default Dialog;
+export default Friend;
