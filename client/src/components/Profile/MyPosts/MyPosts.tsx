@@ -25,7 +25,6 @@ const MyPosts = ({ postsData, addPost }: PostsDataType) => {
   ));
   
   const handlerAddPost= () => {
-    alert(addPost)
     addPost('great job 1')
   }
 
