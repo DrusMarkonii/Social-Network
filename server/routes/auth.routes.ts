@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import User from '../models/User/User';
 import bcrypt from 'bcrypt';
 import  config from 'config';
@@ -12,11 +12,11 @@ const router = Router();
 
 router.post(
   '/registration',
-  // [
-  //   check('email', 'Incorrect email').isEmail(),
-  //   check('password', 'Incorrect password').isLength({ min: 3, max: 12 }),
-  // ],
-  async ( req, res ) => {
+  [
+    check('email', 'Incorrect email').isEmail(),
+    check('password', 'Incorrect password').isLength({ min: 3, max: 12 }),
+  ],
+  async ( req:Request, res:Response ) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -38,6 +38,7 @@ router.post(
       const user = new User({ email, password: hashPassword, userName });
       await user.save();
 
+      console.log(user)
       return res.json({ message: `User ${userName} was created` });
 
     } catch (e) {
@@ -49,7 +50,7 @@ router.post(
 
 
 router.post('/login', 
-async ( req, res ) => {
+async ( req:Request, res:Response ) => {
   try {
     const { email, password} = req.body;
     const user = await User.findOne({email})
