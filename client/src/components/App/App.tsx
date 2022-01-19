@@ -48,6 +48,7 @@ const App = ({ appState, addPost }: stateType) => (
       
     </div>
     {/* <Footer /> */}
+    <h1>hello</h1>
   </Router>
 );
 
