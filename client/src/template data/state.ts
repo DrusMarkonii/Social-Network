@@ -47,15 +47,6 @@ const state = {
   },
 };
 
-// export const addPost = (postMessage: string) => {
-//   const newPost = {
-//     id: 4,
-//     username: 'Drus Markoni',
-//     message: postMessage,
-//     likesCount: 0,
-//   };
-//   state.profilePage.postsData.push(newPost);
-// };
 
 const store = {
   state,
