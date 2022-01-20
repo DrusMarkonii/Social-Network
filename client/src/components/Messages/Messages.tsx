@@ -3,22 +3,19 @@ import './Messages.css';
 import Dialog from './Dialog/Dialog';
 import DialogMassage from './Dialog/DialogMassage';
 
-type dialogsObjType = {
-  id: number;
-  username: string;
-};
-
-type messagesObjType = {
-  id: number;
-  message: string;
-};
-
-type MessagesType = {
-  dialogsData: dialogsObjType[];
-  messagesData: messagesObjType[];
-}
-
-const Messages = ({dialogsData, messagesData}: MessagesType) => {
+const Messages = () => {
+  const messagesData = [
+    { id: 1, message: 'Ok. buy!' },
+    { id: 2, message: 'What are you doing?' },
+    { id: 3, message: 'how are you?' },
+    { id: 4, message: 'Hello' },
+  ];
+  const dialogsData = [
+    { id: 1, username: 'Drus' },
+    { id: 2, username: 'Rob' },
+    { id: 3, username: 'Bob' },
+    { id: 4, username: 'Jon' },
+  ];
 
   const DialogsItems = dialogsData.map((user) => (
     <Dialog username={user.username} id={user.id} key={user.id} />

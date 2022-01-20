@@ -2,19 +2,33 @@ import React from 'react';
 import './MyPosts.css';
 import Post from './Post/Post';
 
-type myType = {
-  username: string;
-  message: string;
-  likesCount: number;
-  id: number;
-};
+const MyPosts = () => {
+  const postsData: {
+    id: number;
+    username: string;
+    message: string;
+    likesCount: number;
+  }[] = [
+    {
+      id: 1,
+      username: 'Drus Markoni',
+      message: 'Welcome to AruSNet with Drus',
+      likesCount: 6,
+    },
+    {
+      id: 2,
+      username: 'Jane Pokr',
+      message: 'Welcome to AruSNet with Jane',
+      likesCount: 3,
+    },
+    {
+      id: 3,
+      username: 'Romale',
+      message: 'Welcome to AruSNet with Romale',
+      likesCount: 1,
+    },
+  ];
 
-type PostsDataType = {
-  postsData: myType[];
-  addPost: any;
-};
-
-const MyPosts = ({ postsData, addPost }: PostsDataType) => {
   const PostItems = postsData.map((item) => (
     <Post
       username={item.username}
@@ -23,11 +37,6 @@ const MyPosts = ({ postsData, addPost }: PostsDataType) => {
       key={item.id}
     />
   ));
-  
-  const handlerAddPost= () => {
-    addPost('great job 1')
-  }
-
 
   return (
     <div className='myPosts'>
@@ -35,7 +44,7 @@ const MyPosts = ({ postsData, addPost }: PostsDataType) => {
         <h5>My MyPosts</h5>
         <div>
           <textarea />
-          <button onClick={handlerAddPost} type='submit'>Add Post</button>
+          <button type='submit'>Add Post</button>
           <button type='submit'>Remove</button>
         </div>
         {PostItems}

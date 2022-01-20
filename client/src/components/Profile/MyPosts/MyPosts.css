@@ -1,4 +1,4 @@
-/* .myPosts {
+.myPosts {
   display: flex;
   padding: 10px
 }
@@ -8,4 +8,4 @@
 .myPosts img {
   width: 40px;
   border-radius: 50%;
-} */
+}
