@@ -5,9 +5,9 @@ import config from 'config';
 import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator';
 
-const router = Router();
+const routerAuth = Router();
 
-router.post(
+routerAuth.post(
   '/registration',
   [
     check('email', 'Incorrect email').isEmail(),
@@ -43,7 +43,7 @@ router.post(
   }
 );
 
-router.post('/login', async (req: Request, res: Response) => {
+routerAuth.post('/login', async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -79,13 +79,6 @@ router.post('/login', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/friends', async (req: Request, res: Response) => {
-  try {
-    const users = await User.find();
-    return res.json(users);
-  } catch (e) {
-    console.log(e);
-  }
-});
 
-export default router;
+
+export default routerAuth;

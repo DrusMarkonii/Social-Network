@@ -18,7 +18,7 @@ const App = () => (
       <Navbar />
       <div className='mainContent'>
         <Routes>
-          <Route path='/' element={<Registration />} />
+          <Route path='/api/auth/registration' element={<Registration />} />
           <Route path='/profile/' element={<Profile />} />
           <Route path='/messages/*' element={<Messages />} />
           <Route path='/news/*' element={<News />} />

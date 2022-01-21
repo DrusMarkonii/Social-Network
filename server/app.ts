@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import config from 'config';
 import authRouter from './routes/auth.routes'
 import cors from 'cors';
+import routerFriends from './routes/friends';
 
 
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 // app.use('/api', (req, res) => res.send('Home page'))
+app.use('/', routerFriends)
 app.use('/api/auth', authRouter)
 
 const start = async () => {

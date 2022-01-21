@@ -9,7 +9,7 @@ const fetchUsers = () => async (dispatch: Dispatch) => {
     // );
 
     const response = await fetch(
-      'http://localhost:5000/api/auth/friends'
+      'http://localhost:5000/friends'
     ).then(data => data.json())
 
     
