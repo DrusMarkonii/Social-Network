@@ -1,7 +1,10 @@
-// import { UserState, } from '../../types/user';
-
 interface UserState {
   users: any[];
+}
+
+interface UserAction {
+  type: string;
+  payload?: any
 }
 
 const FETCH_USERS = 'FETCH_USERS';
@@ -12,10 +15,13 @@ const initialState: UserState = {
   users: [],
 };
 
-const userReducer = ( action: any, state = initialState,) => {
+// eslint-disable-next-line default-param-last
+export const userReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
-    case FETCH_USERS:
-      return { ...state, users: [...state.users, action.payload] };
+  case FETCH_USERS:
+    return { ...state, users: [...state.users, ...action.payload] };
+  default:
+    return state;
   }
 };
 
@@ -35,5 +41,5 @@ const userReducer = ( action: any, state = initialState,) => {
 //     return state;
 //   }
 // };
-
+export const addUsersAction = (payload:any) => ({type: FETCH_USERS, payload })
 export default userReducer;

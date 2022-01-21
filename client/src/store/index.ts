@@ -1,11 +1,18 @@
-import { createStore, combineReducers } from 'redux';
-import userReducers from './reducers/userReducer';
-// import thunk from 'redux-thunk';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import  userReducers  from './reducers/userReducer';
+
+
 
 const rootReducer = combineReducers({
-  userReducers
+  users: userReducers,
 });
 
-const store = createStore(rootReducer);
+type RootState = ReturnType<typeof rootReducer>
+
+export const useTypesSelector:TypedUseSelectorHook<RootState>  = useSelector
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;

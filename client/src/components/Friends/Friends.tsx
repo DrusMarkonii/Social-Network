@@ -1,16 +1,28 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
 
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTypesSelector } from '../../store';
+import fetchUsers from '../../store/action-creators/user';
+import Friend from './Friend/Friend';
 
-const Friends:React.FC = () => {
+const UserList: React.FC = () => {
   // eslint-disable-next-line no-shadow
-  const state = useSelector(state => state)
-  console.log(state)
-  return <div className='friends'>hi</div>;
+  const users = useTypesSelector((state) => state.users);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUsers());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <div>
+      {users.users.map((friend) => <Friend username={friend.name} key={friend.id} id={friend.id}/>)}
+
+    </div>
+    
+  );
 };
 
-export default Friends;
-
+export default UserList;
 
 
 
