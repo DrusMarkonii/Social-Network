@@ -8,6 +8,7 @@ import Friend from './Friend/Friend';
 const UserList: React.FC = () => {
   // eslint-disable-next-line no-shadow
   const users = useTypesSelector((state) => state.users);
+  console.log(users.users)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUsers());
@@ -15,7 +16,7 @@ const UserList: React.FC = () => {
   }, []);
   return (
     <div>
-      {users.users.map((friend) => <Friend username={friend.name} key={friend.id} id={friend.id}/>)}
+      {users.users.map((friend) => <Friend username={friend.userName} key={friend.id} id={friend.userName}/>)}
 
     </div>
     

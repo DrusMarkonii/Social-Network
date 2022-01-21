@@ -1,14 +1,11 @@
 import { Router, Request, Response } from 'express';
 import User from '../models/User/User';
 import bcrypt from 'bcrypt';
-import  config from 'config';
+import config from 'config';
 import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator';
 
-
 const router = Router();
-
-
 
 router.post(
   '/registration',
@@ -16,7 +13,7 @@ router.post(
     check('email', 'Incorrect email').isEmail(),
     check('password', 'Incorrect password').isLength({ min: 3, max: 12 }),
   ],
-  async ( req:Request, res:Response ) => {
+  async (req: Request, res: Response) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -38,9 +35,7 @@ router.post(
       const user = new User({ email, password: hashPassword, userName });
       await user.save();
 
-      console.log(user)
       return res.json({ message: `User ${userName} was created` });
-
     } catch (e) {
       console.log('Errors Router Registration', e);
       res.send({ message: 'Server error' });
@@ -48,41 +43,49 @@ router.post(
   }
 );
 
-
-router.post('/login', 
-async ( req:Request, res:Response ) => {
+router.post('/login', async (req: Request, res: Response) => {
   try {
-    const { email, password} = req.body;
-    const user = await User.findOne({email})
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
 
-    if(!user) {
-      return res.status(400).json({message: 'User not found'})
+    if (!user) {
+      return res.status(400).json({ message: 'User not found' });
     }
 
-    const isPassValid = bcrypt.compareSync(password, user.password)
+    const isPassValid = bcrypt.compareSync(password, user.password);
 
-    if(!isPassValid) {
-      return res.status(400).json({message: 'Invalid password'})
+    if (!isPassValid) {
+      return res.status(400).json({ message: 'Invalid password' });
     }
-    
-    const token = jwt.sign({id: user.id}, config.get('secretKey'), {expiresIn: '1h'})
+
+    const token = jwt.sign({ id: user.id }, config.get('secretKey'), {
+      expiresIn: '1h',
+    });
     return res.json({
       token,
       user: {
         id: user.id,
+        userName: user.userName,
         email: user.email,
         avatar: user.avatar,
         dialogs: user.dialogs,
         posts: user.posts,
-        friends: user.friends
-      }
-    })
-
+        friends: user.friends,
+      },
+    });
   } catch (e) {
     console.log('Errors Router Login', e);
     res.send({ message: 'Server error' });
   }
-}
-)
+});
+
+router.get('/friends', async (req: Request, res: Response) => {
+  try {
+    const users = await User.find();
+    return res.json(users);
+  } catch (e) {
+    console.log(e);
+  }
+});
 
 export default router;
