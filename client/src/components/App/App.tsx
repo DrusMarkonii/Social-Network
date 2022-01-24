@@ -11,41 +11,20 @@ import News from '../News/News';
 import Friends from '../Friends/Friends';
 import Registration from '../Registration/Registration';
 
-
-type stateType = {
-  appState: any;
-  addPost: any
-};
-
-const App = ({ appState, addPost }: stateType) => (
+const App = () => (
   <Router>
     <Header />
     <div className='container'>
       <Navbar />
       <div className='mainContent'>
         <Routes>
-          <Route path='/' element={<Registration />} />
-          <Route
-            path='/profile/'
-            element={<Profile postsData={appState.profilePage.postsData} addPost={addPost}/>}
-          />
-          <Route
-            path='/messages/*'
-            element={
-              <Messages
-                messagesData={appState.messagesPage.messagesData}
-                dialogsData={appState.messagesPage.dialogsData}
-              />
-            }
-          />
+          <Route path='/api/auth/registration' element={<Registration />} />
+          <Route path='/profile/' element={<Profile />} />
+          <Route path='/messages/*' element={<Messages />} />
           <Route path='/news/*' element={<News />} />
-          <Route
-            path='/friends/*'
-            element={<Friends friendsData={appState.friendsPage.friendsData} />}
-          />
+          <Route path='/friends/*' element={<Friends />} />
         </Routes>
       </div>
-      
     </div>
     {/* <Footer /> */}
   </Router>

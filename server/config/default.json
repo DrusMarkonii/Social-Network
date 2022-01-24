@@ -1,0 +1,5 @@
+{
+    "serverPort": 5000,
+    "mongoUrl": "mongodb+srv://DrusMarkonii:298518422@cluster0.5fs8x.mongodb.net/SocialNetwork?retryWrites=true&w=majority",
+    "secretKey": "social-network"
+}

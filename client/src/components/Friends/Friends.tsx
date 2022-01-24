@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import Friend from './Friend/Friend';
 
-type friendsObjType = {
-  username: string,
-  id:number
-}
+const UserList: React.FC = () => {
+  const [users, setUsers] = useState<any[]>([]);
 
-type friendsDataType = {
-  friendsData: friendsObjType[];
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'http://localhost:5000/friends',
+      );
+      
+      setUsers(result.data);
+    };
+    fetchData()
+  }, [])
+
+  return (
+    <div>
+      {}
+      {users.map((friend) => (
+        <Friend
+          username={friend.userName}
+          key={friend.id}
+          id={friend.userName}
+        />
+      ))}
+    </div>
+  );
 };
 
-const Friends = ({ friendsData }: friendsDataType) => {
-  const friendsItem = friendsData.map((friend) => (
-    <Friend username={friend.username} key={friend.id} id={friend.id} />
-  ));
-  return <div className='friends'>{friendsItem}</div>;
-};
-
-export default Friends;
+export default UserList;
