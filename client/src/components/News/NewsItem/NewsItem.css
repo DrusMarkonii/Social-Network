@@ -1,32 +1,38 @@
 .news {
   display: flex;
+  flex-direction: column;
   padding: 10px;
   background-color: burlywood;
-  width: 800px;
+  width: 100%;
   height: 200px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin-bottom: 30px;
+  /* margin-right: 10px; */
 
 }
 
-.news img {
+.user img {
   width: 40px;
   border-radius: 50%;
 }
 
-.comments {
-  position: relative;
-  top: 130px;
-  left: -200px;
-  height: 50px;
-  width: 200px;
-  background-color: coral;
-
+.like img {
+  width: 40px;
+  border-radius: 20%;
+  padding: 5px;
+  margin-right: 10px;
 }
 
 .likesBox {
   display: flex;
-  position: relative;
-  top: 130px;
-  left: -200px;
+  
+}
+
+.user {
+  display: flex;
+}
+
+.content {
+  margin: 20px 0;
+  background-color: beige;
+  padding: 10px;
 }

@@ -1,40 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './MyPosts.css';
+import axios from 'axios';
 import Post from './Post/Post';
 
 const MyPosts = () => {
-  const postsData: {
-    id: number;
-    username: string;
-    message: string;
-    likesCount: number;
-  }[] = [
-    {
-      id: 1,
-      username: 'Drus Markoni',
-      message: 'Welcome to AruSNet with Drus',
-      likesCount: 6,
-    },
-    {
-      id: 2,
-      username: 'Jane Pokr',
-      message: 'Welcome to AruSNet with Jane',
-      likesCount: 3,
-    },
-    {
-      id: 3,
-      username: 'Romale',
-      message: 'Welcome to AruSNet with Romale',
-      likesCount: 1,
-    },
-  ];
+  const [posts, setPosts] = useState<any[]>([]);
+  const [textPost, setTextPost] = useState('');
+  const [isSubmit, setIsSubmit] = useState(false)
 
-  const PostItems = postsData.map((item) => (
+  const handlerSubmit = async () => {
+    await axios.post('http://localhost:5000/posts', {
+      userName: 'Drus',
+      content:  textPost,
+    });
+    setIsSubmit(!isSubmit)
+    console.log(textPost);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios('http://localhost:5000/posts');
+
+      setPosts(result.data);
+    };
+    fetchData();
+    setTextPost('')
+
+  }, [isSubmit]);
+
+  const changeTextArea = (e: any) => setTextPost(e.target.value);
+
+  const PostItems = posts.map((item) => (
     <Post
-      username={item.username}
-      message={item.message}
+      username={item.userName}
+      message={item.content}
       likesCount={item.likesCount}
       key={item.id}
+      id={item.id}
     />
   ));
 
@@ -42,10 +44,11 @@ const MyPosts = () => {
     <div className='myPosts'>
       <div>
         <h5>My MyPosts</h5>
-        <div>
-          <textarea />
-          <button type='submit'>Add Post</button>
-          <button type='submit'>Remove</button>
+        <div className='inputTextBox'>
+          <textarea value={textPost} onChange={changeTextArea} />
+          <button type='submit' onClick={handlerSubmit}>
+            Add Post
+          </button>
         </div>
         {PostItems}
       </div>

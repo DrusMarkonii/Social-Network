@@ -1,11 +1,19 @@
 .post {
   display: flex;
-  padding: 10px
+  padding: 10px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  width: 400px
 }
-.post div {
-  margin-right: 10px;
-}
+
 .post img {
   width: 40px;
   border-radius: 50%;
+}
+
+.removeBtn {
+  
+  position: relative;
+  bottom: 6px;
+  font-size: 15px;
 }

@@ -4,7 +4,7 @@ import User from '../models/User/User';
 
 const routerFriends = Router();
 
-routerFriends.get('/friends', async (req: Request, res: Response) => {
+routerFriends.get('/', async (req: Request, res: Response) => {
     try {
       const users = await User.find();
       return res.json(users);

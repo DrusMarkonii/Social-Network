@@ -19,7 +19,6 @@ const UserList: React.FC = () => {
 
   return (
     <div>
-      {}
       {users.map((friend) => (
         <Friend
           username={friend.userName}
