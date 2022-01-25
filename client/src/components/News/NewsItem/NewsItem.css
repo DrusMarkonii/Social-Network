@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 10px;
   background-color: burlywood;
-  width: 100%;
+  width: 600px;
   height: 200px;
   margin-bottom: 30px;
   /* margin-right: 10px; */
@@ -31,7 +31,8 @@
   display: flex;
 }
 
-.content {
+.content-news {
+  width: 580px;
   margin: 20px 0;
   background-color: beige;
   padding: 10px;

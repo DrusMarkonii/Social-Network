@@ -14,7 +14,7 @@ const NewsItem = ({ username, message, likeCount }: NewsType) => (
       <div>{username}</div>
     </div>
     
-    <div className='content'>{message}</div>
+    <div className='content-news'>{message}</div>
     <div className='likesBox'>
       <div className='like'>
         <img

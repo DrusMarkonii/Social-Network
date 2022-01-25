@@ -15,9 +15,9 @@ routerPosts.get('/', async (req: Request, res: Response) => {
 
 routerPosts.post('/', async (req, res) => {
   try {
-    const {  content, userName } = req.body;
+    const {  content, userName, id } = req.body;
 
-    const post = new Post({content, userName})
+    const post = new Post({content, userName, id})
     await post.save()
 
     return res.send({ message: `Post was created` })
@@ -31,11 +31,10 @@ routerPosts.post('/', async (req, res) => {
 
 routerPosts.delete('/', async (req, res) => {
   try {
-    const { userName } = req.body;
+    const {id} = req.body;
 
-    await Post.deleteOne({userName})
-    
-
+    await Post.deleteOne({id})
+  
     return res.json({ message: `Post was delete` })
     
   } catch (e) {

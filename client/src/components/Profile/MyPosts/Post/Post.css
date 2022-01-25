@@ -1,9 +1,10 @@
 .post {
   display: flex;
-  padding: 10px;
+  flex-wrap: wrap;
+  padding: 5px;
   border: 1px solid black;
   margin-bottom: 20px;
-  width: 400px
+  max-width: 400px
 }
 
 .post img {
@@ -16,4 +17,14 @@
   position: relative;
   bottom: 6px;
   font-size: 15px;
+}
+
+.content {
+  max-width: 300px;
+  overflow:hidden;
+}
+
+.content p{
+  width: 250px;
+  word-break: break-word;
 }

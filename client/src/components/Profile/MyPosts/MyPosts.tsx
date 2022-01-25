@@ -6,15 +6,23 @@ import Post from './Post/Post';
 const MyPosts = () => {
   const [posts, setPosts] = useState<any[]>([]);
   const [textPost, setTextPost] = useState('');
-  const [isSubmit, setIsSubmit] = useState(false)
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handlerSubmit = async () => {
-    await axios.post('http://localhost:5000/posts', {
-      userName: 'Drus',
-      content:  textPost,
-    });
-    setIsSubmit(!isSubmit)
-    console.log(textPost);
+    if (textPost !== '') {
+      await axios.post('http://localhost:5000/posts', {
+        id: Date.now(),
+        userName: 'Drus',
+        content: textPost,
+      });
+      setIsSubmit(!isSubmit);
+    } else {
+      alert('Enter text!');
+    }
+  };
+
+  const handlerChangeSubmit = (state: any) => {
+    setIsSubmit(!state);
   };
 
   useEffect(() => {
@@ -24,14 +32,15 @@ const MyPosts = () => {
       setPosts(result.data);
     };
     fetchData();
-    setTextPost('')
-
+    setTextPost('');
   }, [isSubmit]);
 
   const changeTextArea = (e: any) => setTextPost(e.target.value);
 
   const PostItems = posts.map((item) => (
     <Post
+      isSubmit={isSubmit}
+      onChangeSubmit={handlerChangeSubmit}
       username={item.userName}
       message={item.content}
       likesCount={item.likesCount}
@@ -45,7 +54,7 @@ const MyPosts = () => {
       <div>
         <h5>My MyPosts</h5>
         <div className='inputTextBox'>
-          <textarea value={textPost} onChange={changeTextArea} />
+          <textarea value={textPost} onChange={changeTextArea} className='textareaInput' placeholder='Enter text'/>
           <button type='submit' onClick={handlerSubmit}>
             Add Post
           </button>
