@@ -22,7 +22,7 @@ const UserList: React.FC = () => {
       {users.map((friend) => (
         <Friend
           username={friend.userName}
-          key={friend.id}
+          key={friend.userName}
           id={friend.userName}
         />
       ))}

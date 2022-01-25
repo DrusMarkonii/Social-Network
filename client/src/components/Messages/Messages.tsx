@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import './Messages.css';
 import Dialog from './Dialog/Dialog';
 import DialogMassage from './Dialog/DialogMassage';
@@ -17,8 +18,22 @@ const Messages = () => {
     { id: 4, username: 'Jon' },
   ];
 
-  const DialogsItems = dialogsData.map((user) => (
-    <Dialog username={user.username} id={user.id} key={user.id} />
+  const [users, setUsers] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'http://localhost:5000/friends',
+      );
+      
+      setUsers(result.data);
+    };
+    fetchData()
+  }, [])
+
+
+  const DialogsItems = users.map((user) => (
+    <Dialog username={user.userName} id={user.userName} key={user.userName} />
   ));
 
   const MessagesItems = messagesData.map((dialog) => (
