@@ -13,4 +13,18 @@ routerFriends.get('/', async (req: Request, res: Response) => {
     }
   });
 
-  export default routerFriends
+  routerFriends.delete('/', async (req: Request, res: Response) => {
+    try {
+      const {userName} = req.body;
+      console.log(req.body)
+      console.log(userName)
+
+    await User.deleteOne({userName})
+  
+    return res.json({ message: `User was delete` })
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  export default routerFriends 

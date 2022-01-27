@@ -4,11 +4,25 @@
   height: 500px;
   padding: 20px
 }
+
+.navbar__list__item {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
 .navbar__list__item a {
   color: white;
   font-size: large;
+  
+  
 }
 
 .navbar__list__item a.active {
+  position: relative;
+  left: 20px;
   background-color: rgb(102, 58, 138);
+  padding: 2px 20px 2px 20px;
+  width: 100px;
+  
+  
 }

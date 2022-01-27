@@ -12,11 +12,17 @@
 .friend a.active {
   background-color: rgb(60, 22, 104);
   color: white;
+  padding: 10px;
 }
 
 .friend a {
   color: darkblue;
-  width: 200px;
+  width: 300px;
   padding: 5px;
+}
+
+.navLink {
+  display: flex;
+  justify-content: space-between;
 }
 

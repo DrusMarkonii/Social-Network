@@ -3,16 +3,16 @@ import './Dialog.css';
 import { NavLink } from 'react-router-dom';
 
 type DialogType = {
-  username: string;
+  userName: string;
   id: number;
 };
 
-const Dialog = ({ username, id }: DialogType) => (
+const Dialog = ({ userName, id }: DialogType) => (
   <div className='dialog'>
     <div>
       <img src='https://www.blexar.com/avatar.png' alt='user ava' />
     </div>
-    <NavLink to={`/messages/${id}`}>{username}</NavLink>
+    <NavLink to={`/messages/${id}`}>{userName}</NavLink>
   </div>
 );
 

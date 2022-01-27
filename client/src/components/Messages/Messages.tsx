@@ -11,12 +11,6 @@ const Messages = () => {
     { id: 3, message: 'how are you?' },
     { id: 4, message: 'Hello' },
   ];
-  const dialogsData = [
-    { id: 1, username: 'Drus' },
-    { id: 2, username: 'Rob' },
-    { id: 3, username: 'Bob' },
-    { id: 4, username: 'Jon' },
-  ];
 
   const [users, setUsers] = useState<any[]>([]);
 
@@ -33,7 +27,7 @@ const Messages = () => {
 
 
   const DialogsItems = users.map((user) => (
-    <Dialog username={user.userName} id={user.userName} key={user.userName} />
+    <Dialog userName={user.userName} id={user.userName} key={user.userName} />
   ));
 
   const MessagesItems = messagesData.map((dialog) => (

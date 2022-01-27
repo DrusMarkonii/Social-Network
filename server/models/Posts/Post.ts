@@ -7,4 +7,4 @@ const Post = new Schema({
     content: {type: String}
 })
 
-export default model('Post', Post)
+export default model('Post', Post)  
