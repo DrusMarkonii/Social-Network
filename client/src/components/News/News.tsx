@@ -3,7 +3,10 @@ import axios from 'axios';
 import NewsItem from './NewsItem/NewsItem';
 
 const News: React.FC = () => {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [data, setData] = useState<any[]>([]);
+
+  const posts = data.reverse()
+  
 
   useEffect( () => {
     const fetchData = async () => {
@@ -11,7 +14,7 @@ const News: React.FC = () => {
         'http://localhost:5000/posts',
       );
       
-      setPosts(result.data);
+      setData(result.data);
     };
     fetchData()
   }, [])

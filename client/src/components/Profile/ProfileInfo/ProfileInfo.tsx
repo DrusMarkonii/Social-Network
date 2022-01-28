@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import './ProfileInfo.css';
 
-// eslint-disable-next-line import/no-cycle
 import { UserContext } from '../../App/App';
 
 const ProfileInfo = () => {
   const user = useContext(UserContext);
 
-  console.log(user)
  
 
   return (

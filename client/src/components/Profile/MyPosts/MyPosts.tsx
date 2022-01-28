@@ -4,9 +4,11 @@ import axios from 'axios';
 import Post from './Post/Post';
 
 const MyPosts = () => {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [data, setData] = useState<any[]>([]);
   const [textPost, setTextPost] = useState('');
   const [isSubmit, setIsSubmit] = useState(false);
+
+  const posts = data.reverse();
 
   const handlerSubmit = async () => {
     if (textPost !== '') {
@@ -29,7 +31,7 @@ const MyPosts = () => {
     const fetchData = async () => {
       const result = await axios('http://localhost:5000/posts');
 
-      setPosts(result.data);
+      setData(result.data);
     };
     fetchData();
     setTextPost('');
