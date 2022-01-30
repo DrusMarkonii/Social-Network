@@ -2,14 +2,14 @@ import React, { useState, useContext } from 'react';
 import './Registration.css';
 import axios from 'axios';
 // eslint-disable-next-line import/no-cycle
-import { UserContext } from '../App/App';
+
 
 const Registration: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isShow, setIsShow] = useState(false);
-  const user = useContext(UserContext);
+  
 
 
   const submitHandler = async () => {
@@ -63,7 +63,7 @@ const Registration: React.FC = () => {
       </div>
       <div>
         <input onClick={submitHandler} type='submit' value='Register' />
-        {user}
+      
       </div>
     </div>
   );

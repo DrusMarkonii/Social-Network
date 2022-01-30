@@ -1,47 +1,53 @@
 import React, { useState, useContext } from 'react';
 import './Login.css';
 import axios from 'axios';
-import { UserContext } from '../App/App';
+import  {UserContext} from '../App/UserContext';
+import { NavLink } from 'react-router-dom';
+
 
 const Login: React.FC = () => {
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isShow, setIsShow] = useState(false);
-  const user = useContext(UserContext);
+  const [email, setEmail] = useState('');
+
+  const {userLogin, setUserLogin, isAuth, setIsAuth} = useContext(UserContext)
+ 
 
 
   const submitHandler = async () => {
-    if (userName && email && password !== '') {
-      await axios.post('http://localhost:5000/api/auth/registration', {
-        userName,
-        email,
-        password,
-      });
-      setIsShow((prev) => !prev);
-
-      alert(`User ${userName} was created !!!`);
-    } else {
-      alert('Enter text!');
+    try {
+      
+      if (email && password !== '') {
+        const response = await axios.post('http://localhost:5000/api/auth/login', {
+          email,
+          password,
+        });
+        const guest = response.data.user
+  
+        console.log(guest)
+        // console.log(response.data.user)
+       
+        setUserLogin(JSON.stringify(guest))
+        setIsAuth(true)
+  
+        localStorage.setItem('token', response.data.token )
+        localStorage.setItem('token', response.data.user)
+        
+        
+      }
+      setEmail('');
+      setPassword('');
+    } catch (e:any) {
+      console.log(e)
     }
 
-    setUserName('');
-    setEmail('');
-    setPassword('');
+    
   };
 
 
   return (
     <div className='login'>
-      <div>
-        User Name
-        <input
-          type='text'
-          placeholder='User name'
-          value={userName}
-          onChange={(e: any) => setUserName(e.target.value)}
-        />
-      </div>
+     
       <div>
         Email
         <input
@@ -61,9 +67,12 @@ const Login: React.FC = () => {
         />
       </div>
       <div>
-        <input onClick={submitHandler} type='submit' value='Login' />
-        {user}
+        
+        <NavLink to='/profile'>
+          <input onClick={submitHandler} type='submit' value='Login' />
+        </NavLink>
       </div>
+      {userLogin}
     </div>
   );
 };

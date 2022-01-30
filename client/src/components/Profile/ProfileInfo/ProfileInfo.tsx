@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import './ProfileInfo.css';
+import { UserContext } from '../../App/UserContext';
 
-import { UserContext } from '../../App/App';
+
 
 const ProfileInfo = () => {
-  const user = useContext(UserContext);
+  const local:any = localStorage.getItem('user')
+  const userData = JSON.parse(local)
+  console.log(local)
+  const {userLogin, setUserLogin} = useContext(UserContext)
 
  
 
@@ -16,7 +20,7 @@ const ProfileInfo = () => {
           alt='background-img'
         />
       </div>
-      <div className='descriptionBlock'>{user} </div>
+      <div className='descriptionBlock'>{userLogin} </div>
     </div>
   );
 };

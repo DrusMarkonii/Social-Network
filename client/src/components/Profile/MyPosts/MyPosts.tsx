@@ -8,7 +8,7 @@ const MyPosts = () => {
   const [textPost, setTextPost] = useState('');
   const [isSubmit, setIsSubmit] = useState(false);
 
-  const posts = data.reverse();
+  
 
   const handlerSubmit = async () => {
     if (textPost !== '') {
@@ -38,6 +38,8 @@ const MyPosts = () => {
   }, [isSubmit]);
 
   const changeTextArea = (e: any) => setTextPost(e.target.value);
+
+  const posts = data.reverse();
 
   const PostItems = posts.map((item) => (
     <Post

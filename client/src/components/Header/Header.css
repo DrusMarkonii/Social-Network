@@ -14,3 +14,10 @@
 .header__logo__img {
   width: 50px;
 }
+
+.button-panel {
+  float: right;
+  margin-right: 30px;
+  margin-top: 15px;
+
+}
