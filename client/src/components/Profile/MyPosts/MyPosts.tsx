@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './MyPosts.css';
 import axios from 'axios';
+import { UserContext } from '../../App/UserContext';
 import Post from './Post/Post';
 
 const MyPosts = () => {
   const [data, setData] = useState<any[]>([]);
   const [textPost, setTextPost] = useState('');
   const [isSubmit, setIsSubmit] = useState(false);
-
-  
+  const { userLogin, setUserLogin } = useContext(UserContext);
+  const userDataLocalStorage = JSON.parse(userLogin);
+  const { userName } = userDataLocalStorage;
 
   const handlerSubmit = async () => {
+    
+
     if (textPost !== '') {
       await axios.post('http://localhost:5000/posts', {
         id: Date.now(),
-        userName: 'Drus',
+        userName,
         content: textPost,
       });
       setIsSubmit(!isSubmit);
@@ -58,7 +62,12 @@ const MyPosts = () => {
       <div>
         <h5>My MyPosts</h5>
         <div className='inputTextBox'>
-          <textarea value={textPost} onChange={changeTextArea} className='textareaInput' placeholder='Enter text'/>
+          <textarea
+            value={textPost}
+            onChange={changeTextArea}
+            className='textareaInput'
+            placeholder='Enter text'
+          />
           <button type='submit' onClick={handlerSubmit}>
             Add Post
           </button>

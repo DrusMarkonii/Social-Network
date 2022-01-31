@@ -1,16 +1,14 @@
 import React, { useState, useContext } from 'react';
 import './Registration.css';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line import/no-cycle
-
 
 const Registration: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isShow, setIsShow] = useState(false);
-  
-
 
   const submitHandler = async () => {
     if (userName && email && password !== '') {
@@ -30,7 +28,6 @@ const Registration: React.FC = () => {
     setEmail('');
     setPassword('');
   };
-
 
   return (
     <div className='registration'>
@@ -62,8 +59,9 @@ const Registration: React.FC = () => {
         />
       </div>
       <div>
-        <input onClick={submitHandler} type='submit' value='Register' />
-      
+        <NavLink to='/'>
+          <input onClick={submitHandler} type='submit' value='Register' />
+        </NavLink>
       </div>
     </div>
   );

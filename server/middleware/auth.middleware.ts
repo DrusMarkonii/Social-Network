@@ -1,24 +1,25 @@
-import { NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import  jwt  from "jsonwebtoken";
 import config from "config"
-
-type AuthorizedRequest = Express.Request & { user: any, headers:any, Request: any, authorization: string, method: any };
-
+import { json } from "stream/consumers";
 
 
-const authMiddleWare =  (req:AuthorizedRequest, res:Response, next:NextFunction) => {
+
+
+const authMiddleWare =  (req:Request, res:Response, next:NextFunction) => {
     if (req.method === "OPTIONS") {
         return next()
     }
 
     try {
-        const token = req.headers.authorization.split('')[1]
+        const token = req.headers.authorization?.split('')[1]
         if (!token) {
-            return "Auth Error"
+            return res.status(401).json({ message: 'Auth error' });
         }
 
-        const decoded = jwt.verify(token,config.get('secretKey') )
-        req.user = decoded
+        const decoded = jwt.verify(token, config.get('secretKey'))
+        // console.log(decoded)
+        req.body.user = decoded
         next()
     } catch (e) {
         console.log(e)

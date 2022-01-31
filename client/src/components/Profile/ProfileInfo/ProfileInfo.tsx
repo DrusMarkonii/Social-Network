@@ -5,11 +5,11 @@ import { UserContext } from '../../App/UserContext';
 
 
 const ProfileInfo = () => {
-  const local:any = localStorage.getItem('user')
-  const userData = JSON.parse(local)
-  console.log(local)
+  
   const {userLogin, setUserLogin} = useContext(UserContext)
-
+  const userDataLocalStorage = JSON.parse(userLogin)
+  const {userName} = userDataLocalStorage
+  
  
 
   return (
@@ -20,7 +20,7 @@ const ProfileInfo = () => {
           alt='background-img'
         />
       </div>
-      <div className='descriptionBlock'>{userLogin} </div>
+      <div className='descriptionBlock'><h5>{userName}</h5> </div>
     </div>
   );
 };

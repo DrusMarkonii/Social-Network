@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import config from 'config';
 import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator';
+import authMiddleWare from '../middleware/auth.middleware';
 
 const routerAuth = Router();
 
@@ -34,14 +35,17 @@ routerAuth.post(
 
       const user = new User({ email, password: hashPassword, userName });
       await user.save();
-
       return res.json({ message: `User ${userName} was created` });
+
     } catch (e) {
       console.log('Errors Router Registration', e);
       res.send({ message: 'Server error' });
     }
   }
 );
+
+
+
 
 routerAuth.post('/login', async (req: Request, res: Response) => {
   try {
@@ -61,6 +65,7 @@ routerAuth.post('/login', async (req: Request, res: Response) => {
     const token = jwt.sign({ id: user.id }, config.get('secretKey'), {
       expiresIn: '1h',
     });
+
     return res.json({
       token,
       user: {
@@ -80,5 +85,30 @@ routerAuth.post('/login', async (req: Request, res: Response) => {
 });
 
 
+// routerAuth.get('/auth', authMiddleWare, async (req: Request, res: Response) => {
+//   try {
+    
+//     const user = await User.findOne({ _id: req.body.id });
+
+//     const token = jwt.sign({ id: user.id }, config.get('secretKey'), {
+//       expiresIn: '1h',
+//     });
+//     return res.json({
+//       token,
+//       user: {
+//         id: user.id,
+//         userName: user.userName,
+//         email: user.email,
+//         avatar: user.avatar,
+//         dialogs: user.dialogs,
+//         posts: user.posts,
+//         friends: user.friends,
+//       },
+//     });
+//   } catch (e) {
+//     console.log('Errors Router Login', e);
+//     res.send({ message: 'Server error' });
+//   }
+// });
 
 export default routerAuth;

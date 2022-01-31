@@ -4,3 +4,12 @@
     margin: 0 auto;
     padding: 20px;
 }
+
+.log-reg {
+    display: flex;
+    align-items: center;
+}
+
+.log-reg.registration {
+    
+}
