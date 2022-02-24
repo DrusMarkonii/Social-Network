@@ -1,4 +1,3 @@
-import React from 'react';
 import './Dialog.css';
 import { NavLink } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ const Dialog = ({ userName, id }: DialogType) => (
     <div>
       <img src='https://www.blexar.com/avatar.png' alt='user ava' />
     </div>
-    <NavLink to={`/messages/${id}`}>{userName}</NavLink>
+    <NavLink to={`/messages/chat/${userName}`}>{userName}</NavLink>
   </div>
 );
 

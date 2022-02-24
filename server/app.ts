@@ -5,6 +5,7 @@ import authRouter from './routes/auth.routes'
 import cors from 'cors';
 import routerFriends from './routes/friends';
 import routerPosts from './routes/posts';
+import routerChat from './routes/chat';
 
 
 
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use('/friends', routerFriends)
 app.use('/posts', routerPosts)
 app.use('/api/auth', authRouter)
+app.use('friend/chat', routerChat)
 
 const start = async () => {
   try {

@@ -17,14 +17,16 @@ const MyPosts = () => {
 
     if (textPost !== '') {
       await axios.post('http://localhost:5000/posts', {
-        id: Date.now(),
+        date: Date.now(),
         userName,
         content: textPost,
       });
       setIsSubmit(!isSubmit);
+      // console.log('-')
     } else {
       alert('Enter text!');
     }
+
   };
 
   const handlerChangeSubmit = (state: any) => {
@@ -43,7 +45,7 @@ const MyPosts = () => {
 
   const changeTextArea = (e: any) => setTextPost(e.target.value);
 
-  const posts = data.reverse();
+  const posts = data;
 
   const PostItems = posts.map((item) => (
     <Post
@@ -53,7 +55,7 @@ const MyPosts = () => {
       message={item.content}
       likesCount={item.likesCount}
       key={item.id}
-      id={item.id}
+      date={item.date}
     />
   ));
 

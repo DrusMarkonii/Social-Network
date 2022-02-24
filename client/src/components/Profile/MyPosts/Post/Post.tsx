@@ -8,21 +8,21 @@ type TypePost = {
   message: string;
   username: string;
   likesCount: number;
-  id: any;
+  date: any;
 };
 
 const Post = ({
   message,
   username,
   likesCount,
-  id,
+  date,
   isSubmit,
   onChangeSubmit,
 }: TypePost) => {
   const removePost = async () => {
     await axios.delete('http://localhost:5000/posts', {
       data: {
-        id,
+        date,
       },
     });
     const changeSubmit = () => onChangeSubmit(isSubmit);
@@ -47,7 +47,7 @@ const Post = ({
       </div>
       <div>{likesCount}</div>
       <div className='removeBtn'>
-        <button id={id} onClick={removePost} type='submit'>
+        <button id={date} onClick={removePost} type='submit'>
           Delete
         </button>
       </div>

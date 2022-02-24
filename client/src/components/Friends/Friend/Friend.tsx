@@ -34,7 +34,7 @@ const Friend = ({ userName, id, onChangeSubmit, isSubmit }: DialogType) => {
         <img src='https://www.blexar.com/avatar.png' alt='user ava' />
       </div>
 
-      <NavLink className='navLink' to={`/friends/${id}`}>
+      <NavLink className='navLink' to={`/friends/${userName}`}>
         {userName}
         <input type='button' value='Delete' onClick={handelClickDelete} />
       </NavLink>

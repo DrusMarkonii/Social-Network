@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NewsItem from './NewsItem/NewsItem';
+import './News.css'
 
 const News: React.FC = () => {
   const [data, setData] = useState<any[]>([]);
 
-  const posts = data.reverse()
+  const posts = data
   
 
   useEffect( () => {

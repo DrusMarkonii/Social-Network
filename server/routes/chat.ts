@@ -1,10 +1,9 @@
 import { Router, Request, Response } from 'express';
 import User from '../models/User/User';
 
+const routerChat = Router();
 
-const routerFriends = Router();
-
-routerFriends.get('/', async (req: Request, res: Response) => {
+routerChat.get('/', async (req: Request, res: Response) => {
     try {
       const users = await User.find();
       return res.json(users);
@@ -13,16 +12,7 @@ routerFriends.get('/', async (req: Request, res: Response) => {
     }
   });
 
-  routerFriends.get('/chat', async (req: Request, res: Response) => {
-    try {
-      const users = await User.find();
-      return res.json(users);
-    } catch (e) {
-      console.log(e);
-    }
-  });
-
-  routerFriends.delete('/', async (req: Request, res: Response) => {
+  routerChat.delete('/', async (req: Request, res: Response) => {
     try {
       const {userName} = req.body;
       console.log(req.body)
@@ -36,4 +26,4 @@ routerFriends.get('/', async (req: Request, res: Response) => {
     }
   });
 
-  export default routerFriends 
+  export default routerChat 

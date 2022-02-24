@@ -5,9 +5,9 @@ const User = new Schema({
     userName: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     avatar: {type: String},
-    dialogs: [{type: Types.ObjectId, ref: 'Dialogs'}],
-    posts: [{type: Types.ObjectId, ref: 'Posts'}],
-    friends: [{type: Types.ObjectId, ref: 'Friends'}],
+    dialogs: [{type: Schema.Types.ObjectId, ref: 'Dialogs'}],
+    posts: [{type: Schema.Types.ObjectId, ref: 'Posts'}],
+    friends: [{type: Schema.Types.ObjectId, ref: 'Friends'}],
 })
 
 export default model('User', User)

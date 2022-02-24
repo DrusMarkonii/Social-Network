@@ -12,6 +12,7 @@ import Friends from '../Friends/Friends';
 import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
 import { UserContext } from './UserContext';
+import Chat from '../Messages/Chat/Chat';
 // import auth from '../Login/auth.action';
 
 const App = () => {
@@ -47,6 +48,8 @@ const App = () => {
                   <Route path='/messages/*' element={<Messages />} />
                   <Route path='/news/*' element={<News />} />
                   <Route path='/friends/*' element={<Friends />} />
+                  <Route path='/messages/chat/*' element={<Chat />} />
+                  
                 </>
               )}
             </Routes>

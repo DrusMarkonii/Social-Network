@@ -6,7 +6,7 @@ const routerPosts = Router();
 
 routerPosts.get('/', async (req: Request, res: Response) => {
     try {
-      const posts = await Post.find();
+      const posts = await Post.find().sort({date: -1});
       return res.json(posts);
     } catch (e) {
       console.log(e);
@@ -15,9 +15,9 @@ routerPosts.get('/', async (req: Request, res: Response) => {
 
 routerPosts.post('/', async (req, res) => {
   try {
-    const {  content, userName, id } = req.body;
+    const { date, content, userName } = req.body;
 
-    const post = new Post({content, userName, id})
+    const post = new Post({content, userName, date})
     await post.save()
 
     return res.send({ message: `Post was created` })
@@ -31,9 +31,9 @@ routerPosts.post('/', async (req, res) => {
 
 routerPosts.delete('/', async (req, res) => {
   try {
-    const {id} = req.body;
+    const {date} = req.body;
 
-    await Post.deleteOne({id})
+    await Post.deleteOne({date})
   
     return res.json({ message: `Post was delete` })
     
