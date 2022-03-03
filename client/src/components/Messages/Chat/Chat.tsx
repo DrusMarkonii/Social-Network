@@ -1,39 +1,75 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import "./Chat.css"
+import React, { useEffect, useState, useContext } from 'react';
+import { io } from 'socket.io-client';
+import { UserContext } from '../../App/UserContext';
+import './Chat.css';
 
 const Chat = () => {
   const [users, setUsers] = useState<any[]>([]);
-  const [textPost, setTextPost] = useState('');
-  const [isSubmit, setIsSubmit] = useState(false);
+  const messages: HTMLDivElement[] = [];
 
-  const handlerSubmit = async () => {
+  const { userLogin, setUserLogin } = useContext(UserContext);
+  const userDataLocalStorage = JSON.parse(userLogin);
+  const { userName } = userDataLocalStorage;
+
+  const [textPost, setTextPost] = useState('');
+  const changeTextArea = (e: any) => setTextPost(e.target.value);
+
+  const socket = io('http://localhost:5000');
+
+  const handlerSubmit = async (e: any) => {
     if (textPost !== '') {
-      await axios(`http://localhost:5000/friend/chat/`);
-      setIsSubmit(!isSubmit);
+      e.preventDefault();
+      socket.emit('chat message', {
+        message: textPost,
+        name: userName,
+      });
+      setTextPost('');
+      console.log(textPost)
+
+      // await axios(`http://localhost:5000/friend/chat/`);
     } else {
       alert('Enter text!');
     }
   };
 
-  const changeTextArea = (e: any) => setTextPost(e.target.value);
+  socket.on('chat message', (data) => {
+    const item = document.createElement('div');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios('http://localhost:5000/friends');
+    if (userName === data.name) {
+      item.className = 'my_message';
+    } else {
+      item.className = 'friend_message';
+    }
 
-      setUsers(result.data);
-    };
-    fetchData();
-  }, []);
+    item.innerHTML = `
+        <div class="text-box">
+            <span>${data.name}:  </span>
+            <span>${data.message}</span>
+        </div>    
+        `;
+    messages.push(item);
+    console.log(item)
+    console.log(data);
+  });
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios('http://localhost:5000/messages/chat/');
+
+  //     setUsers(result.data);
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <>
       <div className='inputTextBox'>
         <h4>Chat</h4>
-        <ul id='messages' />
+        <ul id='messages'>
+          {/* {messages.map(item => <li key={item.}>{item}</li>)} */}
+        </ul>
         <form id='form' action=''>
-          <div className='name'>Guest</div>
+          <div className='name'>{userName}</div>
           <input
             id='input'
             autoComplete='off'

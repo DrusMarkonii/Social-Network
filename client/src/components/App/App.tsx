@@ -7,6 +7,7 @@ import Navbar from '../Navbar/Navbar';
 import Profile from '../Profile/Profile';
 import Messages from '../Messages/Messages';
 import './App.css';
+// import socket from '../socket';
 import News from '../News/News';
 import Friends from '../Friends/Friends';
 import Registration from '../Registration/Registration';

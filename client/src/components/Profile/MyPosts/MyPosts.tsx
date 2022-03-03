@@ -63,7 +63,7 @@ const MyPosts = () => {
     <div className='myPosts'>
       <div>
         <h5>My MyPosts</h5>
-        <div className='inputTextBox'>
+        <div className='inputTextBoxProfile'>
           <textarea
             value={textPost}
             onChange={changeTextArea}
